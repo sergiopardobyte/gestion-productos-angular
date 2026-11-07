@@ -1,0 +1,19 @@
+<nav class="navbar">
+  <div class="marca">
+    <span class="logo">A</span>
+    <div>
+      <h1>{{ nombreAplicacion }}</h1>
+      <small>Panel de inventario</small>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a routerLink="/productos" routerLinkActive="activo">Ver inventario</a>
+    <a routerLink="/nuevo-producto" routerLinkActive="activo">+ Nuevo producto</a>
+  </div>
+</nav>
+
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
+
+<footer>Práctica de Angular · TypeScript · RxJS · Angular Router</footer>

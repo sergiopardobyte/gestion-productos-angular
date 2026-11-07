@@ -1,0 +1,36 @@
+<section class="form-container">
+  <a routerLink="/productos" class="volver">← Volver al inventario</a>
+  <p class="eyebrow">NUEVO REGISTRO</p>
+  <h2>Agregar nuevo producto</h2>
+  <p class="descripcion">Completa los datos para incorporar un producto al inventario.</p>
+
+  <form #formProducto="ngForm" (ngSubmit)="guardar()">
+    <div class="campo">
+      <label for="nombre">Nombre del producto</label>
+      <input id="nombre" type="text" [(ngModel)]="nuevoProducto.nombre" name="nombre"
+             placeholder="Ej. Lentes de lectura" required>
+    </div>
+
+    <div class="campo">
+      <label for="precio">Precio ($)</label>
+      <input id="precio" type="number" [(ngModel)]="nuevoProducto.precio" name="precio"
+             min="0" step="0.01" required>
+    </div>
+
+    <div class="campo">
+      <label for="categoria">Categoría</label>
+      <select id="categoria" [(ngModel)]="nuevoProducto.categoria" name="categoria">
+        <option value="Tecnología">Tecnología</option>
+        <option value="Accesorios">Accesorios</option>
+        <option value="General">General</option>
+      </select>
+    </div>
+
+    <div class="campo-checkbox">
+      <label><input type="checkbox" [(ngModel)]="nuevoProducto.disponible" name="disponible">
+        Producto disponible</label>
+    </div>
+
+    <button type="submit" class="btn-guardar" [disabled]="formProducto.invalid">Guardar producto</button>
+  </form>
+</section>

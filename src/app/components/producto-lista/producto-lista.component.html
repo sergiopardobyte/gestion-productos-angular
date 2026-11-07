@@ -1,0 +1,37 @@
+<section class="encabezado">
+  <div>
+    <p class="eyebrow">INVENTARIO</p>
+    <h2>{{ titulo }}</h2>
+    <p class="subtitulo">Consulta, revisa y administra los productos registrados.</p>
+  </div>
+  <a class="btn-principal" routerLink="/nuevo-producto">+ Agregar producto</a>
+</section>
+
+<div *ngIf="productos.length === 0" class="alerta">
+  No hay productos disponibles en este momento.
+</div>
+
+<div class="tabla-wrap" *ngIf="productos.length > 0">
+  <table class="tabla-productos">
+    <thead>
+      <tr>
+        <th>ID</th><th>Nombre</th><th>Precio</th><th>Categoría</th><th>Estado</th><th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prod of productos">
+        <td class="id">#{{ prod.id }}</td>
+        <td class="nombre">{{ prod.nombre }}</td>
+        <td>${{ prod.precio | number:'1.2-2' }}</td>
+        <td>{{ prod.categoria }}</td>
+        <td>
+          <span [class.disponible]="prod.disponible" [class.agotado]="!prod.disponible">
+            {{ prod.disponible ? 'Disponible' : 'Agotado' }}
+          </span>
+        </td>
+        <td><button type="button" (click)="borrar(prod.id)" class="btn-eliminar">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p class="contador">Total de productos: <strong>{{ productos.length }}</strong></p>
